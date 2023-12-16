@@ -1,7 +1,7 @@
 # NTLMCrack
 Use [ntlm.pw](https://ntlm.pw) (by [@lkarlslund](https://github.com/lkarlslund/)) to automatically convert hash dumps to credentials
 
-[![asciicast](https://asciinema.org/a/VrCXedOSa1vF5uvNiYi51GcPR.svg)](https://asciinema.org/a/VrCXedOSa1vF5uvNiYi51GcPR)
+[![asciicast](https://asciinema.org/a/ZXIpK3LfqdH3LAuOxRKvYQfTw.svg)](https://asciinema.org/a/ZXIpK3LfqdH3LAuOxRKvYQfTw)
 
 ## Usage
 
