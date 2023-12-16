@@ -22,11 +22,11 @@ options:
 
 Output to one file:
 ```bash
-python3 main.py example_hashes/hashes -n 100
+./NTLMCrack.py example_hashes/hashes -n 100
 ```
 
 Output to separate files:
 ```bash
-python3 main.py example_hashes/hashes -n 100 -s
+./NTLMCrack.py example_hashes/hashes -n 100 -s
 ```
 
