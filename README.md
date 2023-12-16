@@ -6,7 +6,7 @@ Use [ntlm.pw](https://ntlm.pw) (by [@lkarlslund](https://github.com/lkarlslund/)
 ## Usage
 
 ```
-usage: main.py [-h] [-s] [-n N] file_path
+usage: NTLMCrack.py [-h] [-s] [-n N] [-f] file_path
 
 Use ntlm.pw to automatically convert hash dumps to credentials
 
@@ -17,6 +17,8 @@ options:
   -h, --help            show this help message and exit
   -s, --separate-files  Output credentials in separate files
   -n N                  Limit to the first n lines of the file
+  -f, --filter-not-found
+                        Filter hashes that can't be cracked
 ```
 
 ## Examples
@@ -31,3 +33,7 @@ Output to separate files:
 ./NTLMCrack.py example_hashes/hashes -n 100 -s
 ```
 
+Filter hashes that can't be cracked:
+```bash
+./NTLMCrack.py example_hashes/hashes -f
+```
