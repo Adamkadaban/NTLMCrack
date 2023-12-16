@@ -47,6 +47,7 @@ def main():
 	parser.add_argument('file_path', help='Path to the file containing hash dumps')
 	parser.add_argument('-s', '--separate-files', action='store_true', help='Output credentials in separate files')
 	parser.add_argument('-n', type=int, help='Limit to the first n lines of the file')
+	parser.add_argument('-f', '--filter-not-found', action='store_true', help="Filter hashes that can't be cracked")
 
 	if len(sys.argv) == 1:
 		parser.print_help()
@@ -60,14 +61,16 @@ def main():
 		userFile = open('users', 'w')
 		passFile = open('passwords', 'w')
 		for user, password in cracked.items():
-			userFile.write(user + "\n")
-			passFile.write(password + "\n")
+			if not args.filter_not_found and password != '[not found]':
+				userFile.write(user + "\n")
+				passFile.write(password + "\n")
 		userFile.close()
 		passFile.close()
 	else:
 		with open('credentials', 'w') as fout:
 			for user, password in cracked.items():
-				fout.write(user + ":" + password + "\n")
+				if not args.filter_not_found and password != '[not found]':
+					fout.write(user + ":" + password + "\n")
 
 if __name__ == "__main__":
 	main()
