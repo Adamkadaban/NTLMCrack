@@ -1,5 +1,5 @@
 # NTLMCrack
-Use [ntlm.pw](https://ntlm.pw) (@lkarlslund)[https://github.com/lkarlslund/] to automatically convert hash dumps to credentials
+Use [ntlm.pw](https://ntlm.pw) [(@lkarlslund)](https://github.com/lkarlslund/) to automatically convert hash dumps to credentials
 
 
 ## Usage
