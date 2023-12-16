@@ -17,3 +17,16 @@ options:
   -s, --separate-files  Output credentials in separate files
   -n N                  Limit to the first n lines of the file
 ```
+
+## Examples
+
+Output to one file:
+```bash
+python3 main.py example_hashes/hashes -n 100
+```
+
+Output to separate files:
+```bash
+python3 main.py example_hashes/hashes -n 100 -s
+```
+
