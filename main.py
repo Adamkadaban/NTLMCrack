@@ -11,19 +11,22 @@ def crack_hashes(path, n):
 	# build hashes to crack
 	users = []
 	hashes = []
-	with open(path) as fin:
-		for idx, line in enumerate(fin, start=1):
-			match = re.match(pattern, line.rstrip())
-			users.append(match.group(1))
-			hashes.append(match.group(2))
+	try:
+		with open(path) as fin:
+			for idx, line in enumerate(fin, start=1):
+				match = re.match(pattern, line.rstrip())
+				users.append(match.group(1))
+				hashes.append(match.group(2))
 
-			if idx == n:
-				break
+				if idx == n:
+					break
+	except FileNotFoundError:
+		print(f'File "{path}" not found')
+		sys.exit(1)
 
 	toCrack = "\n".join(hashes)
 
 	response = requests.post('https://ntlm.pw/api/bulklookup', data=toCrack)
-
 	r_text = response.text
 
 	cracked = [c.split(':')[1] for c in r_text.split("\n")[:-1]]
