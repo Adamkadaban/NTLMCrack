@@ -2,6 +2,7 @@
 import re
 import requests
 import argparse
+import sys
 
 
 def crack_hashes(path, n):
@@ -34,6 +35,10 @@ def main():
 	parser.add_argument('file_path', help='Path to the file containing hash dumps')
 	parser.add_argument('-s', '--separate-files', action='store_true', help='Output credentials in separate files')
 	parser.add_argument('-n', type=int, help='Limit to the first n lines of the file')
+
+	if len(sys.argv) == 1:
+		parser.print_help()
+		sys.exit(1)
 
 	args = parser.parse_args()
 
