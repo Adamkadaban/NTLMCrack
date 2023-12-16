@@ -24,12 +24,21 @@ def crack_hashes(path, n):
 		print(f'File "{path}" not found')
 		sys.exit(1)
 
-	toCrack = "\n".join(hashes)
+	hashPhases = [hashes[i: i + 100] for i in range(0, len(hashes), 100)]
+	cracked = []
 
-	response = requests.post('https://ntlm.pw/api/bulklookup', data=toCrack)
-	r_text = response.text
+	for crackPhase in hashPhases:
+		toCrack = "\n".join(crackPhase)
 
-	cracked = [c.split(':')[1] for c in r_text.split("\n")[:-1]]
+		response = requests.post('https://ntlm.pw/api/bulklookup', data=toCrack)
+
+		if response.status_code != 200:
+			print(response.text)
+			sys.exit(1)
+
+		r_text = response.text
+
+		cracked.extend([c.split(':')[1] for c in r_text.split("\n")[:-1]])
 
 	return dict(zip(users, cracked))
 
